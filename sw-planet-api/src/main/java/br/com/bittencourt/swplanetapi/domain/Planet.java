@@ -1,6 +1,7 @@
 package br.com.bittencourt.swplanetapi.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 @NoArgsConstructor
@@ -14,8 +15,16 @@ public class Planet {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
+    @Column(nullable = false, unique = true)
     private String name;
+
+    @NotEmpty
+    @Column(nullable = false)
     private String climate;
+
+    @NotEmpty
+    @Column(nullable = false)
     private String terrain;
 
     public Planet(String name, String climate, String terrain) {
