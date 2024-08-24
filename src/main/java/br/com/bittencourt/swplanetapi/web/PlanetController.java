@@ -2,6 +2,7 @@ package br.com.bittencourt.swplanetapi.web;
 
 import br.com.bittencourt.swplanetapi.domain.Planet;
 import br.com.bittencourt.swplanetapi.domain.PlanetService;
+import jakarta.validation.Valid;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,7 @@ public class PlanetController {
     private PlanetService planetService;
 
     @PostMapping
-    public ResponseEntity<Planet> create(@RequestBody Planet planet){
+    public ResponseEntity<Planet> create(@RequestBody @Valid Planet planet){
 
         Planet planetCreated = planetService.create(planet);
 
